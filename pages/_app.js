@@ -1,9 +1,17 @@
-import Page from "../components/Page";
+import Router from 'next/router';
 
-export default function MyApp( {Component, pageProps } ) {
-    return (
-        <Page>
-            <Component {...pageProps} />
-        </Page>
-    );
+import Nprogress from 'nprogress';
+import Page from '../components/Page';
+import '../components/styles/nprogress.css';
+
+Router.events.on('routerChangeStart', () => Nprogress.start());
+Router.events.on('routerChangeComplete', () => Nprogress.done());
+Router.events.on('routerChangeError', () => Nprogress.done());
+
+export default function MyApp({ Component, pageProps }) {
+  return (
+    <Page>
+      <Component {...pageProps} />
+    </Page>
+  );
 }
