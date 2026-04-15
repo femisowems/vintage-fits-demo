@@ -6,11 +6,14 @@ import calcTotalPrice from '../lib/calcTotalPrice';
 import { useCart } from '../lib/cartState';
 import CloseButton from './styles/CloseButton';
 import Supreme from './styles/Supreme';
+import SickButton from './styles/SickButton';
 
 export default function Cart() {
   const me = useUser();
   const { cartOpen, closeCart } = useCart();
   if (!me) return null;
+  const hasItems = me.cart.length > 0;
+
   return (
     <CartStyles open={cartOpen}>
       <header>
@@ -24,6 +27,9 @@ export default function Cart() {
       </ul>
       <footer>
         <p>{formatMoney(calcTotalPrice(me.cart))}</p>
+        <SickButton type="button" disabled={!hasItems}>
+          Checkout Now
+        </SickButton>
       </footer>
     </CartStyles>
   );
