@@ -1,17 +1,35 @@
 {
-  "name": "vintagefits-frontend",
+  "name": "vintage-fits-demo",
   "version": "2.0.0",
-  "description": "Vintage Fits! An example React, GraphQL, Next and Apollo",
+  "description": "Vintage Fits — Next.js 10 storefront with Apollo Client, Styled Components, and Stripe checkout",
   "main": "index.js",
+  "private": true,
+  "author": "Femi Sowemimo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/femisowemimo/vintage.git",
+    "directory": "vintage-fits-demo"
+  },
+  "keywords": [
+    "nextjs",
+    "react",
+    "graphql",
+    "apollo",
+    "styled-components",
+    "stripe",
+    "e-commerce",
+    "vintage"
+  ],
   "scripts": {
-    "postinstall": "node -e \"const fs=require('fs');const p='node_modules/extract-files/package.json';if(fs.existsSync(p)){const d=JSON.parse(fs.readFileSync(p));if(d.exports){delete d.exports;fs.writeFileSync(p,JSON.stringify(d,null,2))}}\"",
-    "dev": "NODE_OPTIONS=--openssl-legacy-provider next -p 7777",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev -p 7777",
     "build": "NODE_OPTIONS=--openssl-legacy-provider next build",
     "start": "NODE_OPTIONS=--openssl-legacy-provider next start -p 7777",
-    "test": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=test jest --watch"
+    "test": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=test jest --watch",
+    "test:ci": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=test jest --ci",
+    "lint": "eslint . --ext .js,.jsx",
+    "postinstall": "node -e \"const fs=require('fs');const p='node_modules/extract-files/package.json';if(fs.existsSync(p)){const d=JSON.parse(fs.readFileSync(p));if(d.exports){delete d.exports;fs.writeFileSync(p,JSON.stringify(d,null,2))}}\""
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@apollo/client": "3.4.0",
     "@apollo/link-error": "^2.0.0-beta.3",
@@ -73,37 +91,42 @@
     ]
   },
   "jest": {
+    "setupFilesAfterFramework": [
+      "./jest.setup.js"
+    ],
     "setupFilesAfterEnv": [
       "./jest.setup.js"
-    ]
+    ],
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   },
-  "//": "This is our babel config, I prefer this over a .babelrc file",
+  "//": "Babel config — preferred over a separate .babelrc file",
   "babel": {
     "env": {
       "development": {
-        "presets": [
-          "next/babel"
-        ],
+        "presets": ["next/babel"],
         "plugins": [
           [
             "styled-components",
             {
               "ssr": true,
-              "displayName": true
+              "displayName": true,
+              "preprocess": false
             }
           ]
         ]
       },
       "production": {
-        "presets": [
-          "next/babel"
-        ],
+        "presets": ["next/babel"],
         "plugins": [
           [
             "styled-components",
             {
               "ssr": true,
-              "displayName": true
+              "displayName": false,
+              "preprocess": false
             }
           ]
         ]
@@ -130,5 +153,8 @@
         ]
       }
     }
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }

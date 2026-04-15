@@ -1,11 +1,62 @@
+# ─── Dependencies ─────────────────────────────────────────────────────────────
 node_modules/
-.DS_Store
-*.log
-haters/
+jspm_packages/
+
+# ─── Build & Generated Outputs ────────────────────────────────────────────────
 .next/
-.build/
-layout.md
-variables.env
+out/
+dist/
+build/
+
+# ─── Environment & Secrets ────────────────────────────────────────────────────
+.env
+.env.*
 *.env
-.keystone
+!.env.example
+variables.env
+
+# ─── Logs ─────────────────────────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ─── Testing & Coverage ───────────────────────────────────────────────────────
+coverage/
+*.lcov
+.nyc_output/
+
+# ─── TypeScript ───────────────────────────────────────────────────────────────
+*.tsbuildinfo
+
+# ─── Caches ───────────────────────────────────────────────────────────────────
+.npm
+.eslintcache
+.stylelintcache
+.cache/
+.parcel-cache/
+
+# ─── OS / Editor Files ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode-test
+
+# ─── Misc ─────────────────────────────────────────────────────────────────────
+*.tgz
 *.db
+*.pid
+*.pid.lock
+*.seed
+haters/
+layout.md
+
+# ─── Yarn ─────────────────────────────────────────────────────────────────────
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
