@@ -6,7 +6,7 @@ import {
   useElements,
   useStripe,
 } from '@stripe/react-stripe-js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import nProgress from 'nprogress';
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
@@ -104,6 +104,13 @@ function CheckoutForm() {
 }
 
 function Checkout() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
+
   return (
     <Elements stripe={stripeLib}>
       <CheckoutForm />

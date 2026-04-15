@@ -7,18 +7,41 @@ const Item = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  overflow: hidden;
+  border-radius: 8px;
+
+  &:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    
+    img {
+      transform: scale(1.08);
+    }
   }
+
+  .image-container {
+    overflow: hidden;
+    height: 400px;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  }
+
   p {
-    line-height: 2;
+    line-height: 1.8;
     font-weight: 300;
     flex-grow: 1;
     padding: 0 3rem;
     font-size: 1.5rem;
+    color: var(--grey);
   }
+
   .buttonList {
     display: grid;
     width: 100%;
@@ -29,8 +52,14 @@ const Item = styled.div`
     & > * {
       background: white;
       border: 0;
-      font-size: 1rem;
-      padding: 1rem;
+      font-size: 1.2rem;
+      padding: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+      &:hover {
+        background: var(--lightGray);
+      }
     }
   }
 `;

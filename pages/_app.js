@@ -7,9 +7,9 @@ import '../components/styles/nprogress.css';
 import withData from '../lib/withData';
 import { CartStateProvider } from '../lib/cartState';
 
-Router.events.on('routerChangeStart', () => Nprogress.start());
-Router.events.on('routerChangeComplete', () => Nprogress.done());
-Router.events.on('routerChangeError', () => Nprogress.done());
+Router.events.on('routeChangeStart', () => Nprogress.start());
+Router.events.on('routeChangeComplete', () => Nprogress.done());
+Router.events.on('routeChangeError', () => Nprogress.done());
 
 function MyApp({ Component, pageProps, apollo }) {
   return (

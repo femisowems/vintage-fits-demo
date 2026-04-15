@@ -33,6 +33,17 @@ export const CURRENT_USER_QUERY = gql`
           id
           total
         }
+        products {
+          id
+          name
+          price
+          description
+          photo {
+            image {
+              publicUrlTransformed
+            }
+          }
+        }
       }
     }
   }

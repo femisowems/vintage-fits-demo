@@ -10,15 +10,16 @@ import AddToCart from './AddToCart';
 export default function Product({ product }) {
   return (
     <ItemStyles>
-      <Link href={`/product/${product.id}`}>
-        <Image
-          src={product?.photo?.image?.publicUrlTransformed}
-          alt={product.name}
-          width={600}
-          height={600}
-          objectFit="cover"
-        />
-      </Link>
+      <div className="image-container">
+        <Link href={`/product/${product.id}`}>
+          <Image
+            src={product?.photo?.image?.publicUrlTransformed}
+            alt={product.name}
+            width={600}
+            height={600}
+          />
+        </Link>
+      </div>
 
       <Title>
         <Link href={`/product/${product.id}`}>{product.name}</Link>
