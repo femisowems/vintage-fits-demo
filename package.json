@@ -4,10 +4,11 @@
   "description": "Vintage Fits! An example React, GraphQL, Next and Apollo",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 7777",
-    "build": "next build",
-    "start": "next start -p 7777",
-    "test": "NODE_ENV=test jest --watch"
+    "postinstall": "node -e \"const fs=require('fs');const p='node_modules/extract-files/package.json';if(fs.existsSync(p)){const d=JSON.parse(fs.readFileSync(p));if(d.exports){delete d.exports;fs.writeFileSync(p,JSON.stringify(d,null,2))}}\"",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider next -p 7777",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider next build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider next start -p 7777",
+    "test": "NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=test jest --watch"
   },
   "author": "",
   "license": "ISC",
