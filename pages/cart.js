@@ -88,7 +88,8 @@ export default function CartPage() {
   const me = useUser();
   if (!me) return <p>Please sign in to view your cart.</p>;
 
-  const hasItems = me.cart.length > 0;
+  const cartItems = me.cart || [];
+  const hasItems = cartItems.length > 0;
 
   return (
     <CartPageStyles>
@@ -106,15 +107,13 @@ export default function CartPage() {
       {hasItems && (
         <>
           <ul>
-            {me.cart.map((cartItem) => (
+            {cartItems.map((cartItem) => (
               <CartItem key={cartItem.id} cartItem={cartItem} />
             ))}
           </ul>
           <div className="summary">
-            <p>Total: {formatMoney(calcTotalPrice(me.cart))}</p>
-            <button type="button" disabled={!hasItems}>
-              Checkout Now
-            </button>
+            <p>Total: {formatMoney(calcTotalPrice(cartItems))}</p>
+            <Checkout />
           </div>
         </>
       )}
