@@ -1,17 +1,24 @@
 import Link from 'next/link';
-
+import Image from 'next/image';
+import formatMoney from '../lib/FormatMoney';
 import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
-import formatMoney from '../lib/FormatMoney';
+
+import AddToCart from './AddToCart';
 
 export default function Product({ product }) {
   return (
     <ItemStyles>
-      <img
-        src={product?.photo?.image?.publicUrlTransformed}
-        alt={product.name}
-      />
+      <Link href={`/product/${product.id}`}>
+        <Image
+          src={product?.photo?.image?.publicUrlTransformed}
+          alt={product.name}
+          width={600}
+          height={600}
+          objectFit="cover"
+        />
+      </Link>
 
       <Title>
         <Link href={`/product/${product.id}`}>{product.name}</Link>
@@ -21,14 +28,16 @@ export default function Product({ product }) {
       <div className="buttonList">
         <Link
           href={{
-            pathname: 'update',
+            pathname: '/update',
             query: {
               id: product.id,
             },
           }}
         >
-          Edit
+          Edit ✏️
         </Link>
+        <AddToCart id={product.id} />
+        <button type="button">Delete ❌</button>
       </div>
     </ItemStyles>
   );

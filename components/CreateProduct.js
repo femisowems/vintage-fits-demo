@@ -65,6 +65,13 @@ export default function CreateProduct() {
             onChange={handleChange}
           />
         </label>
+        {inputs.image && (
+          <img
+            src={URL.createObjectURL(inputs.image)}
+            alt="Preview"
+            width="200"
+          />
+        )}
         <label htmlFor="name">
           Name
           <input

@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 import Nav from './Nav';
+import Search from './Search';
 
 const Logo = styled.h1`
   font-size: 4rem;
   margin-left: 2rem;
   position: relative;
   z-index: 2;
-  background: black;
+  background: var(--red);
   transform: skew(-7deg);
+  display: inline-block;
   a {
     color: white;
     text-decoration: none;
@@ -19,17 +21,18 @@ const Logo = styled.h1`
 
 const HeaderStyles = styled.header`
   .bar {
-    border-bottom: 10px solid var(--black, black);
+    border-bottom: 2px solid var(--black, black);
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
+    padding: 1rem 0;
   }
 
   .sub-bar {
     display: grid;
     grid-template-columns: 1fr auto;
-    border-bottom: 1px solid var(--black, black);
+    border-bottom: 1px solid var(--lightGrey);
   }
 `;
 
@@ -43,7 +46,7 @@ export default function Header() {
         <Nav />
       </div>
       <div className="sub-bar">
-        <p> Search </p>
+        <Search />
       </div>
     </HeaderStyles>
   );

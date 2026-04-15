@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
 import styled from 'styled-components';
+import Image from 'next/image';
 import DisplayError from './ErrorMessage';
 
 const ProductStyles = styled.div`
@@ -13,9 +14,10 @@ const ProductStyles = styled.div`
   justify-content: center;
   align-items: top;
   gap: 2rem;
-  img {
-    width: 100%;
-    object-fit: contain;
+  .image-container {
+    width: 600px;
+    height: 600px;
+    position: relative;
   }
 `;
 
@@ -50,10 +52,14 @@ export default function SingleProduct({ id }) {
       <Head>
         <title> Vintage Fits | {Product.name} </title>
       </Head>
-      <img
-        src={Product.photo.image.publicUrlTransformed}
-        alt={Product.photo.altText}
-      />
+      <div className="image-container">
+        <Image
+          src={Product.photo.image.publicUrlTransformed}
+          alt={Product.photo.altText}
+          layout="fill"
+          objectFit="contain"
+        />
+      </div>
       <div className="details">
         <h2>{Product.name}</h2>
         <p>{Product.description}</p>

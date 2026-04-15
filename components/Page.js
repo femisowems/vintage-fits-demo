@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import styled, { createGlobalStyle } from 'styled-components';
 import Header from './Header';
+import Cart from './Cart';
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -10,37 +11,42 @@ const GlobalStyles = createGlobalStyle`
     font-style: normal;
   }
   html {
-    --red: #ff0000;
-    --black: #393939;
-    --grey: #3A3A3A;
+    --red: #ff4757;
+    --black: #2f3542;
+    --grey: #57606f;
     --gray: var(--grey);
-    --lightGrey: #e1e1e1;
+    --lightGrey: #f1f2f6;
     --lightGray: var(--lightGrey);
-    --offWhite: #ededed;
-    --maxWidth: 1000px;
-    --bs: 0 12px 24px 0 rgba(0,0,0,0.09);
+    --offWhite: #ffffff;
+    --maxWidth: 1200px;
+    --bs: 0 8px 30px rgba(0,0,0,0.05);
     box-sizing: border-box;
-    font-size: 10px; /* 1rem = 10px */
+    font-size: 10px;
   }
   *, *:before, *:after {
     box-sizing: inherit;
   }
   body {
-    font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
-    line-height:2;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: var(--black);
+    background: var(--lightGrey);
   }
   a {
     text-decoration: none;
-    color: var(---black);
+    color: var(--black);
+    transition: all 0.2s ease;
   }
   a:hover {
-    text-decoration: underline;
+    color: var(--red);
+    text-decoration: none;
   }
   button {
-    font-family: 'radnika_next', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    cursor: pointer;
   }
 `;
 
@@ -55,6 +61,7 @@ export default function Page({ children }) {
     <div>
       <GlobalStyles />
       <Header />
+      <Cart />
       <InnerStyles>{children}</InnerStyles>
     </div>
   );
