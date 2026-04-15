@@ -34,6 +34,9 @@ const SINGLE_ITEM_QUERY = gql`
           publicUrlTransformed
         }
       }
+      user {
+        id
+      }
     }
   }
 `;

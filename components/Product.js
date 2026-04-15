@@ -6,8 +6,10 @@ import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
 
 import AddToCart from './AddToCart';
+import { useUser } from './User';
 
 export default function Product({ product }) {
+  const me = useUser();
   return (
     <ItemStyles>
       <div className="image-container">
@@ -27,18 +29,24 @@ export default function Product({ product }) {
       <PriceTag>{formatMoney(product.price)}</PriceTag>
       <p>{product.description}</p>
       <div className="buttonList">
-        <Link
-          href={{
-            pathname: '/update',
-            query: {
-              id: product.id,
-            },
-          }}
-        >
-          Edit ✏️
-        </Link>
-        <AddToCart id={product.id} />
-        <button type="button">Delete ❌</button>
+        {me && (
+          <>
+            <Link
+              href={{
+                pathname: '/update',
+                query: {
+                  id: product.id,
+                },
+              }}
+            >
+              Edit ✏️
+            </Link>
+            <AddToCart id={product.id} />
+          </>
+        )}
+        {me && me.id === product.user?.id && (
+          <button type="button">Delete ❌</button>
+        )}
       </div>
     </ItemStyles>
   );
