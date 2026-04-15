@@ -5,6 +5,7 @@ import CartItem from '../components/CartItem';
 import formatMoney from '../lib/FormatMoney';
 import calcTotalPrice from '../lib/calcTotalPrice';
 import Link from 'next/link';
+import Checkout from '../components/Checkout';
 
 const CartPageStyles = styled.div`
   padding: 2rem;

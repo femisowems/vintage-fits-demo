@@ -7,6 +7,7 @@ import PriceTag from './styles/PriceTag';
 
 import AddToCart from './AddToCart';
 import { useUser } from './User';
+import DeleteProduct from './DeleteProduct';
 
 export default function Product({ product }) {
   const me = useUser();
@@ -45,7 +46,7 @@ export default function Product({ product }) {
           </>
         )}
         {me && me.id === product.user?.id && (
-          <button type="button">Delete ❌</button>
+          <DeleteProduct id={product.id}>Delete ❌</DeleteProduct>
         )}
       </div>
     </ItemStyles>

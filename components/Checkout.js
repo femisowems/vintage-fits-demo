@@ -38,7 +38,7 @@ const CREATE_ORDER_MUTATION = gql`
   }
 `;
 
-const stripeLib = loadStripe('pk_test_nahhh_replace_me');
+const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 function CheckoutForm() {
   const [error, setError] = useState();
@@ -118,4 +118,4 @@ function Checkout() {
   );
 }
 
-export { Checkout };
+export default Checkout;

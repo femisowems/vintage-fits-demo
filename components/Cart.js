@@ -8,7 +8,7 @@ import CloseButton from './styles/CloseButton';
 import Supreme from './styles/Supreme';
 import SickButton from './styles/SickButton';
 
-import { Checkout } from './Checkout';
+import Checkout from './Checkout';
 
 export default function Cart() {
   const me = useUser();
